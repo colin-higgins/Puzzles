@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using NUnit.Framework;
 
 namespace Puzzles.AdventOfCode.Y2017
@@ -55,14 +54,14 @@ What is the checksum for the spreadsheet in your puzzle input?
         {
             var checkSum = 0;
 
-            var rows = input.Split(new [] { Environment.NewLine }, StringSplitOptions.None);
+            var rows = input.EnumerizeLines();
 
-            foreach (var row in rows)
+            foreach (var row in rows.SplitOnWhitespace())
             {
                 var numbers =
-                    row.Split(new[] {' ', '\t'}, StringSplitOptions.RemoveEmptyEntries)
-                        .Select(int.Parse)
-                        .OrderBy(i => i);
+                    row.Select(int.Parse)
+                       .OrderBy(i => i);
+
                 checkSum += numbers.Last() - numbers.First();
             }
 
@@ -117,13 +116,12 @@ What is the sum of each row's result in your puzzle input?
         {
             var checkSum = 0;
 
-            var rows = input.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            var rows = input.EnumerizeLines();
 
-            foreach (var row in rows)
+            foreach (var row in rows.SplitOnWhitespace())
             {
                 var numbers =
-                    row.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries)
-                        .Select(int.Parse)
+                    row.Select(int.Parse)
                         .OrderByDescending(i => i);
 
                 int divisor = 0;

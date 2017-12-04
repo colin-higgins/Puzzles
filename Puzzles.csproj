@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdventOfCode\Helpers.cs" />
     <Compile Include="AdventOfCode\Y2017\Day02.cs" />
     <Compile Include="AdventOfCode\Y2017\Day01.cs" />
     <Compile Include="AdventOfCode\Y2017\Day03.cs" />
