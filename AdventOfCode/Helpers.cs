@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Puzzles.AdventOfCode
 {
@@ -25,6 +26,11 @@ namespace Puzzles.AdventOfCode
         public static IEnumerable<string> SplitOnWhitespace(this string input)
         {
             return input.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        public static IEnumerable<int> SplitToIntegers(this string input)
+        {
+            return input.EnumerizeLines().SelectMany(s => s.SplitOnWhitespace()).Select(int.Parse);
         }
     }
 }
