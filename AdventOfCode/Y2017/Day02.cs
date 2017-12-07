@@ -54,7 +54,7 @@ What is the checksum for the spreadsheet in your puzzle input?
         {
             var checkSum = 0;
 
-            var rows = input.EnumerizeLines();
+            var rows = input.SplitOnNewLine();
 
             foreach (var row in rows.SplitOnWhitespace())
             {
@@ -116,7 +116,7 @@ What is the sum of each row's result in your puzzle input?
         {
             var checkSum = 0;
 
-            var rows = input.EnumerizeLines();
+            var rows = input.SplitOnNewLine();
 
             foreach (var row in rows.SplitOnWhitespace())
             {

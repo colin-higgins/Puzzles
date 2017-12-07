@@ -35,7 +35,7 @@ ww www ww asd
         [TestCase(1, PassphraseList)]
         public void Part1(int expectedValidCount, string input)
         {
-            var rows = input.EnumerizeLines();
+            var rows = input.SplitOnNewLine();
             var validCount = 0;
 
             foreach (var row in rows)
@@ -76,7 +76,7 @@ ww www ww asd
         [TestCase(223, PassphraseList)]
         public void Part2(int expectedValidCount, string input)
         {
-            var rows = input.EnumerizeLines();
+            var rows = input.SplitOnNewLine();
             var validCount = 0;
 
             foreach (var row in rows)
