@@ -70,6 +70,7 @@ namespace Puzzles.AdventOfCode.Y2017
                     towerLevelChild.Parent = towerLevel;
                 }
             }
+
             return towerLevels;
         }
 
@@ -180,7 +181,8 @@ cntj (57)
                 nextProblemLevel =
                     problemLevel
                         .Children.GroupBy(c => c.TotalWeight)
-                        .SingleOrDefault(t => t.Count() == 1)?.Single();
+                        .WhereLengthIs(1)
+                        .SingleOrDefault()?.Single();
             }
 
             var weightChangedTo = problemLevel.Weight + neededDiff;
