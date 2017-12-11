@@ -30,7 +30,7 @@ namespace Puzzles.AdventOfCode
 
         public static IEnumerable<string> SplitOn(this string input, params string[] separators)
         {
-            return input.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            return input.Split(separators, StringSplitOptions.RemoveEmptyEntries).TrimAll();
         }
 
         public static IList<string> TrimAll(this IList<string> strings)
@@ -43,9 +43,12 @@ namespace Puzzles.AdventOfCode
             return strings;
         }
 
-        public static IEnumerable<int> SplitToIntegers(this string input)
+        public static IEnumerable<int> SplitToIntegers(this string input, params string[] splitters)
         {
-            return input.SplitOnNewLine().SelectMany(s => s.SplitOnWhitespace()).Select(int.Parse);
+            if (splitters.Length == 0)
+                return input.SplitOnNewLine().SelectMany(s => s.SplitOnWhitespace()).Select(i => int.Parse(i.Trim()));
+
+            return input.SplitOnNewLine().SelectMany(s => s.SplitOn(splitters)).Select(i => int.Parse(i.Trim()));
         }
 
         public static string RemoveInstancesOf(this string input, params string[] matches)
